@@ -20,7 +20,10 @@ pipeline {
         stage('Detect Branch') {
             steps {
                 script {
-                    env.ACTUAL_BRANCH = env.BRANCH_NAME ?: 'master'
+                    env.ACTUAL_BRANCH = sh(
+                        script: "git rev-parse --abbrev-ref HEAD || echo master",
+                        returnStdout: true
+                    ).trim()
                     echo "🔍 Rama activa: ${env.ACTUAL_BRANCH}"
                 }
             }
