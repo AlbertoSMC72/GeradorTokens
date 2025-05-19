@@ -18,7 +18,7 @@ app.use(express.json());
 app.use("/", TokenRouter);
 
 app.use((req, res) => {
-    res.status(404).send("Wrong route QA");
+    res.status(404).send("Wrong route DEVELOP");
 });
 
 config.connect().then(() => {
